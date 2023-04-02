@@ -1,3 +1,40 @@
 #parent{
     color: aquamarine;
 }
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+.logo{
+    width: 200px;
+    height:105px;
+}
+.nav-items >ul{
+    display: flex;
+    list-style: none;
+}
+.nav-items >ul>li{
+    margin: 10px;
+    padding: 10px;
+}
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.search{
+    padding: 10px;
+}
+.photo{
+    height: 120px;
+    width: 195px;
+}
+.card{
+    background-color: #f0f0f0;
+    width: 200px;
+    margin: 5px;
+    padding: 25px;
+}
+.card:hover{
+    border: 1px solid black;
+}
