@@ -1,24 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ResturantCard from "./ResturantCard";
-import { restaurantList } from "../utils/mockData";
+import { API_URL } from "../utils/constants";
+import ShimmerEffect from "./ShimmerEffect";
 const Body=()=>{
-    const[RestaurantList,setRestaurantList]=useState(restaurantList)
+    const[RestaurantList,setRestaurantList]=useState([])
+    const[filterRestaurantList,setFilterRestaurantList]=useState([])
+    const[search,setSearch]=useState("")
+    useEffect(()=>{
+    AllData()
+    },[])
+    async function AllData(){
+        const data=await fetch(API_URL)
+        const json=await data.json()
+        console.log(json?.data?.cards[2]?.data?.data?.cards)
+        setFilterRestaurantList(json?.data?.cards[2]?.data?.data?.cards)
+        setRestaurantList(json?.data?.cards[2]?.data?.data?.cards)
+
+    }
+    const FilterData=(search,list)=>{
+      const searchResult=list.filter((value)=>
+         value.data.name.toLowerCase().includes(search.toLowerCase())
+      )
+      return searchResult;
+    }
+    
+
     return (
-        <div className='body'>
+    <div className='body'>
             <button className='rated_btn'
             onClick={()=>{
-                console.log("clicked")
              const new_list=RestaurantList.filter((res)=>res.data.avgRating>4)
-               setRestaurantList(new_list)
+               setFilterRestaurantList(new_list)
     }}>Top Rated Restaurant</button>
+    <input name="search" value={search} onChange={(e)=>setSearch(e.target.value)}/><button onClick={()=>{const data=FilterData(search,RestaurantList);
+  setFilterRestaurantList(data)}}>Search</button>
+    {RestaurantList.length===0?<ShimmerEffect/>:
             <div className='res-container'>
                 {
-                    RestaurantList.map((res)=>(
+                    filterRestaurantList.map((res)=>(
                         <ResturantCard key={res.data.id}list={res}/>
                     ))
                 }
             </div>
-            
+         }
 
         </div>
     )

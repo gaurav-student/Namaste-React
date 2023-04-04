@@ -16,7 +16,6 @@ const ResturantCard=(props)=>{
             <h5>{cuisines.join(",")}</h5>
             <h5>{avgRating} Stars</h5>
             </div>
-    
         )
     }
 export default ResturantCard;    

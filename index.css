@@ -25,6 +25,7 @@
 .rated_btn{
     margin: 10px;
     padding: 10px;
+    cursor: pointer;
 }
 .photo{
     height: 120px;
@@ -35,6 +36,7 @@
     width: 200px;
     margin: 5px;
     padding: 25px;
+    cursor: pointer;
 }
 .card:hover{
     border: 1px solid black;
