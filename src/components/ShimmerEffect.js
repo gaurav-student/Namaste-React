@@ -1,7 +1,15 @@
 const ShimmerEffect=()=> {
     return (
-      <h1>Loading...........</h1>
-    )
+      <div className='res-container'>
+        {Array(15).fill("").map((e,index)=>(
+          <div 
+          key={index} 
+          className='card-shimmer'>
+            </div> 
+        ))}
+        
+        </div>
+           )
   }
 
  

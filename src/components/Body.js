@@ -24,7 +24,9 @@ const Body=()=>{
       return searchResult;
     }
     
-
+    if(filterRestaurantList.length===0){
+      return <h1>No Restaurant Found.....</h1>
+    }
     return (
     <div className='body'>
             <button className='rated_btn'
